@@ -33,7 +33,7 @@ namespace LyricMaker.Parser.Component
             if (_filterDuplicated && ruby == parent)
                 return null;
 
-            // TODO : have a better way to deal timetag in ruby.
+            // TODO : have a better way to deal time tag in ruby.
             ruby = string.Join("", TimeTagExtension.SeparateKaraokeLine(ruby).Select(x => x.word));
 
             // Has start time and end time
@@ -47,7 +47,7 @@ namespace LyricMaker.Parser.Component
                 Parent = parent,
                 Ruby = ruby,
                 StartPosition = startPosition,
-                EndPosition = endPosition,
+                EndPosition = endPosition
             };
 
             Position? FindPositionByTimeTag(string timeTagText)
@@ -57,7 +57,7 @@ namespace LyricMaker.Parser.Component
 
                 var milliSecond = TimeTagExtension.timetag2millisec(timeTagText);
 
-                for (int i = 0; i < _lyric.Lines.Length; i++)
+                for (var i = 0; i < _lyric.Lines.Length; i++)
                 {
                     var line = _lyric.Lines[i];
                     for (var j = 0; j < line.TimeTags.Length; j++)
@@ -96,7 +96,7 @@ namespace LyricMaker.Parser.Component
 
             var startTimeTag = GenerateTimeTagByPosition(rubyTag.StartPosition);
             var endTimeTag = GenerateTimeTagByPosition(rubyTag.EndPosition);
-            value = value + $",{startTimeTag},{endTimeTag}";
+            value += $",{startTimeTag},{endTimeTag}";
 
             // TODO : need to implement time range
             return new AtTag

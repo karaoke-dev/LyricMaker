@@ -12,7 +12,7 @@ namespace LyricMaker.Parser.Component
             if (!line.StartsWith("@"))
                 return null;
 
-            // 三文字以下(最短構成"@n=") 行頭@ではない 行頭@@は除外
+            // At tag should be at least 3 characters (@=?)
             if (line.Length < 3 || line[0] != '@' || line[1] == '@')
                 return new AtTag("", "");
 

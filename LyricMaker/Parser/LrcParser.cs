@@ -26,7 +26,6 @@ namespace LyricMaker.Parser
             // Components
             var atTags = new List<AtTag>();
             var rubyTags = new List<RubyTag>();
-            var lyricLines = new List<LyricLine>();
 
             // Get all lines
             var sr = new StringReader(text);
@@ -49,15 +48,10 @@ namespace LyricMaker.Parser
 
             // Get all lyric from remain text
             var timeTagComponent = new TimeTagParserComponent();
-            foreach (var line in lines)
-            {
-                var lyricLine = timeTagComponent.Decode(line);
-                lyricLines.Add(lyricLine);
-            }
 
             var lyric = new Lyric
             {
-                Lines = lyricLines.ToArray(),
+                Lines = lines.Select(line => timeTagComponent.Decode(line)).ToArray()
             };
 
             // Process ruby tags
@@ -86,7 +80,7 @@ namespace LyricMaker.Parser
             if (lyric == null)
                 return null;
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             // Get all lyric in remain text
             var timeTagComponent = new TimeTagParserComponent();
@@ -100,21 +94,14 @@ namespace LyricMaker.Parser
             // Change new line
             sb.AppendLine("");
 
-            var atTags = new List<AtTag>();
-
             // Convert ruby into ast tag
             var rubyTagComponent = new RubyTagParserComponent(lyric);
-            foreach (var rubyTag in lyric.RubyTags)
-            {
-                var rubyResult = rubyTagComponent.Encode(rubyTag);
-                atTags.Add(rubyResult);
-            }
+            var atTags = lyric.RubyTags.Select(rubyTag => rubyTagComponent.Encode(rubyTag)).ToList();
 
             // Convert at tag into string
             var atTagComponent = new AtTagParserComponent();
-            foreach (var atTag in atTags)
+            foreach (var atTagResult in atTags.Select(atTag => atTagComponent.Encode(atTag)))
             {
-                var atTagResult = atTagComponent.Encode(atTag);
                 //Copy result
                 sb.AppendLine(atTagResult);
             }
