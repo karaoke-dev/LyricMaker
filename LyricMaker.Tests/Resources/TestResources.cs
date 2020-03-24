@@ -12,12 +12,6 @@ namespace LyricMaker.Tests.Resources
 
         public static Stream OpenResource(string name) => GetStore().GetStream($"Resources/{name}");
 
-        public static Stream OpenBeatmapResource(string name) => OpenResource($"Testing/Beatmaps/{name}.osu");
-
-        public static Stream OpenSkinResource(string name) => OpenResource($"Testing/Skin/{name}.skin");
-
         public static Stream OpenLrcResource(string name) => OpenResource($"Testing/Lrc/{name}.lrc");
-
-        public static Stream OpenNicoKaraResource(string name) => OpenResource($"Testing/NicoKara/{name}.nkmproj");
     }
 }

@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\**" />
     <EmbeddedResource Remove="Resources\TestResources.cs" />
   </ItemGroup>
 
