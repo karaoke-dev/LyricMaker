@@ -4,7 +4,7 @@
 using System.IO;
 using osu.Framework.IO.Stores;
 
-namespace osu.Game.Rulesets.Karaoke.Tests.Resources
+namespace LyricMaker.Tests.Resources
 {
     public static class TestResources
     {
