@@ -12,13 +12,13 @@ namespace LyricMaker.Extensions
         public static void SetDecimalPointColon() { decimalPoint = ':'; }
 
         private static char decimalPoint = '.';
-        public static char DecimalPoint { get { return decimalPoint; } }
+        public static char DecimalPoint => decimalPoint;
 
         private static Regex timeTagRegex = new Regex(@"\[\d\d:\d\d[:.]\d\d\]");
         private static Regex headTimeTagRegex = new Regex(@"^\[\d\d:\d\d([:.]\d\d)?\]");
 
-        public static Regex TimeTagRegex { get { return timeTagRegex; } }
-        public static Regex HeadTimeTagRegex { get { return headTimeTagRegex; } }
+        public static Regex TimeTagRegex => timeTagRegex;
+        public static Regex HeadTimeTagRegex => headTimeTagRegex;
 
         /// <summary>
         /// Convert milliseconds to format [mm:ss.ss]
@@ -88,16 +88,16 @@ namespace LyricMaker.Extensions
         /// <returns></returns>
         public static Pair[] SeparateKaraokeLine(string line)
         {
-            int offset = 0;
-            string tt = "";
-            Match h = HeadTimeTagRegex.Match(line);
+            var offset = 0;
+            var tt = "";
+            var h = HeadTimeTagRegex.Match(line);
             if (h.Success)
             {
                 tt = h.Value;
                 offset = h.Length;
             }
-            List<Pair> ret = new List<Pair>();
-            MatchCollection mc = TimeTagRegex.Matches(line, offset);
+            var ret = new List<Pair>();
+            var mc = TimeTagRegex.Matches(line, offset);
             if (mc.Count == 0)
             {
                 ret.Add(ConvertPair(tt, line.Substring(offset)));
