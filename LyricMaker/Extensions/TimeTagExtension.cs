@@ -29,20 +29,18 @@ namespace LyricMaker.Extensions
         /// </example>
         /// <param name="millisec"></param>
         /// <returns></returns>
-        public static string millisec2timetag(int millisec)
+        public static string millisec2timeTag(int millisec)
         {
-            if (millisec < 0)
-                return "";
-            return string.Format("[{0:D2}:{1:D2}" + DecimalPoint + "{2:D2}]", millisec / 1000 / 60, millisec / 1000 % 60, millisec / 10 % 100);
+            return millisec < 0 ? "" : string.Format("[{0:D2}:{1:D2}" + DecimalPoint + "{2:D2}]", millisec / 1000 / 60, millisec / 1000 % 60, millisec / 10 % 100);
         }
 
-        public static int timetag2millisec(string timetag)
+        public static int timetag2millisec(string timeTag)
         {
-            if (timetag.Length < 10 || timetag[0] != '[' || !char.IsDigit(timetag[1]))
+            if (timeTag.Length < 10 || timeTag[0] != '[' || !char.IsDigit(timeTag[1]))
                 return -1;
-            int minute = int.Parse(timetag.Substring(1, 2));
-            int second = int.Parse(timetag.Substring(4, 2));
-            int mili10 = int.Parse(timetag.Substring(7, 2));
+            var minute = int.Parse(timeTag.Substring(1, 2));
+            var second = int.Parse(timeTag.Substring(4, 2));
+            var mili10 = int.Parse(timeTag.Substring(7, 2));
 
             return (minute * 60 + second) * 1000 + mili10 * 10;
         }

@@ -13,7 +13,7 @@ namespace LyricMaker.Tests
             TimeTagExtension.SetDecimalPointColon();
         }
 
-        protected void IsLyricEqual(string expected, string actual, CultureInfo info = null)
+        protected void IsLyricEqual(string expected, string actual)
         {
             var expectedLyric = expected.Replace("\n", "");
             var actualLyric = expected.Replace("\n", "");

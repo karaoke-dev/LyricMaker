@@ -116,7 +116,7 @@ namespace LyricMaker.Parser.Component
                 //Get time
                 var time = _lyric?.Lines[p.Line]?.TimeTags[p.Index].Time;
 
-                return time == null ? null : TimeTagExtension.millisec2timetag(time.Value);
+                return time == null ? null : TimeTagExtension.millisec2timeTag(time.Value);
             }
         }
     }

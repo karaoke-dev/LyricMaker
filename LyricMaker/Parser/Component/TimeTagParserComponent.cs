@@ -96,19 +96,19 @@ namespace LyricMaker.Parser.Component
             {
                 var t1 = l.TimeTags[1 + index * 2];
                 var t2 = l.TimeTags[1 + index * 2 + 1];
-                return TimeTagExtension.millisec2timetag(t1.CheckedTime) +
+                return TimeTagExtension.millisec2timeTag(t1.CheckedTime) +
                         l.Text[index] +
-                        TimeTagExtension.millisec2timetag(t2.CheckedTime);
+                        TimeTagExtension.millisec2timeTag(t2.CheckedTime);
             }
             
             string HeadTimeTag(LyricLine l)
             {
-                return TimeTagExtension.millisec2timetag(l.TimeTags[0].CheckedTime);
+                return TimeTagExtension.millisec2timeTag(l.TimeTags[0].CheckedTime);
             }
             
             string TailTimeTag(LyricLine l)
             {
-                return TimeTagExtension.millisec2timetag(l.TimeTags[l.TimeTags.Length - 1].CheckedTime);
+                return TimeTagExtension.millisec2timeTag(l.TimeTags[l.TimeTags.Length - 1].CheckedTime);
             }
         }
     }

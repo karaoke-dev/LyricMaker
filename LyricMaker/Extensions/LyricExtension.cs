@@ -41,7 +41,7 @@ namespace LyricMaker.Extensions
                         {
                             StartIndex = i,
                             EndIndex = i + 1,
-                            Ruby = queryResult,
+                            Ruby = queryResult
                         });
 
                         i = i + take - 1;
