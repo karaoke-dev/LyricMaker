@@ -1,9 +1,9 @@
-﻿namespace LyricMaker.Checker
+﻿namespace LyricMaker.AutoComplete.TimeTags
 {
     /// <summary>
-    /// Parameter of <see cref="TimeTagPointAutoCheck"/>
+    /// Parameter of <see cref="TimeTagAutoComplete"/>
     /// </summary>
-    public class TimeTagPointAutoCheckParameter
+    public class TimeTagAutoCompleteParameter
     {
         public bool CheckLineEnd { get; set; }
 

@@ -1,19 +1,19 @@
 ﻿using LyricMaker.Model;
 using LyricMaker.Model.Tags;
 
-namespace LyricMaker.Checker
+namespace LyricMaker.AutoComplete.TimeTags
 {
     /// <summary>
     /// Checker that can auto check which <see cref="TimeTag"/> is clickable
     /// </summary>
-    public class TimeTagPointAutoCheck
+    public class TimeTagAutoComplete
     {
         /// <summary>
         /// Mark time tag as checked by parameter
         /// </summary>
         /// <param name="lyric"></param>
         /// <param name="setting"></param>
-        public void AutoCheck(Lyric lyric, TimeTagPointAutoCheckParameter setting)
+        public void AutoCheck(Lyric lyric, TimeTagAutoCompleteParameter setting)
         {
             foreach (var line in lyric.Lines)
             {
