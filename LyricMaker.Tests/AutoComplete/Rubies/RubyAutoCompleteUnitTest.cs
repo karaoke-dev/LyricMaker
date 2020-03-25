@@ -12,7 +12,7 @@ namespace LyricMaker.Tests.AutoComplete.Rubies
         [TestCase("り", "リ")]
         [TestCase("道", "ミチ")]
         [TestCase("は", "ハ")]
-        public void TestRubyAutoComplate(string text, string expect)
+        public void TestRubyAutoComplete(string text, string expect)
         {
             var lyric = GenerateLyric(text);
 
