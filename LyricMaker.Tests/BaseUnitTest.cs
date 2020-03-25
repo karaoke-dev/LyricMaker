@@ -14,13 +14,13 @@ namespace LyricMaker.Tests
             TimeTagExtension.SetDecimalPointColon();
         }
 
-        protected Lyric GenerateLyric(string lyric)
+        protected static Lyric GenerateLyric(string lyric)
         {
             var parser = new LrcParser();
             return parser.Decode(lyric);
         }
 
-        protected void IsLyricEqual(string expected, string actual)
+        protected static void IsLyricEqual(string expected, string actual)
         {
             var expectedLyric = expected.Replace("\n", "");
             var actualLyric = expected.Replace("\n", "");

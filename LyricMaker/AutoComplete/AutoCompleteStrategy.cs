@@ -18,6 +18,6 @@
         /// <summary>
         /// Not replace if conflict
         /// </summary>
-        NotReplaceIfConflict,
+        NotReplaceIfConflict
     }
 }

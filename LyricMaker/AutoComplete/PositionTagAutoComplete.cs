@@ -20,7 +20,7 @@ namespace LyricMaker.AutoComplete
         /// <param name="tags"></param>
         /// <param name="newTags"></param>
         /// <returns></returns>
-        internal abstract IList<T> CleanUpTags(IList<T> tags, IList<T> newTags = null);
+        internal abstract IEnumerable<T> CleanUpTags(IEnumerable<T> tags, IList<T> newTags = null);
 
         /// <summary>
         /// Generate list of tag by one lyric line

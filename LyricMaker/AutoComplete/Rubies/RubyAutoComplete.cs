@@ -10,7 +10,7 @@ namespace LyricMaker.AutoComplete.Rubies
 {
     public class RubyAutoComplete : PositionTagAutoComplete<RubyTag>, IAutoComplete<AutoCompleteStrategy>
     {
-        protected override Analyzer Analyzer => Analyzer.NewAnonymous(createComponents: (fieldName, reader) =>
+        protected override Analyzer Analyzer => Analyzer.NewAnonymous((fieldName, reader) =>
         {
             Tokenizer tokenizer = new JapaneseTokenizer(reader, null, true, JapaneseTokenizerMode.SEARCH);
             return new TokenStreamComponents(tokenizer, new JapaneseReadingFormFilter(tokenizer, false));
@@ -36,6 +36,8 @@ namespace LyricMaker.AutoComplete.Rubies
                 case AutoCompleteStrategy.NotReplaceIfConflict:
                     rubyTags = CleanUpTags(lyric.RubyTags.ToList(),rubyTags).ToList();
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(strategy), strategy, null);
             }
 
             // Apply rubies
@@ -48,7 +50,7 @@ namespace LyricMaker.AutoComplete.Rubies
         /// <param name="tags">Old tags.</param>
         /// <param name="newTags">New tags, paste only not conflict.</param>
         /// <returns></returns>
-        internal override IList<RubyTag> CleanUpTags(IList<RubyTag> tags,IList<RubyTag> newTags = null)
+        internal override IEnumerable<RubyTag> CleanUpTags(IEnumerable<RubyTag> tags,IList<RubyTag> newTags = null)
         {
             var result = new List<RubyTag>();
 

@@ -67,7 +67,7 @@ namespace LyricMaker.AutoComplete.TimeTags
                     }
                     else if (IsLatin(c) || char.IsNumber(c) || IsASCIISymbol(c))
                     {
-                        if (char.IsWhiteSpace(pc) || (!IsLatin(pc) && !char.IsNumber(pc) && !IsASCIISymbol(pc)))
+                        if (char.IsWhiteSpace(pc) || !IsLatin(pc) && !char.IsNumber(pc) && !IsASCIISymbol(pc))
                         {
                             line.TimeTags[i * 2 + 1] = timeTag;
                         }
@@ -135,7 +135,7 @@ namespace LyricMaker.AutoComplete.TimeTags
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        private bool IsLatin(char c)
+        private static bool IsLatin(char c)
         {
             return c >= 'A' && c <= 'Z' ||
                    c >= 'a' && c <= 'z' ||
@@ -148,7 +148,7 @@ namespace LyricMaker.AutoComplete.TimeTags
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        private bool IsASCIISymbol(char c)
+        private static bool IsASCIISymbol(char c)
         {
             return c >= ' ' && c <= '/' ||
                    c >= ':' && c <= '@' ||
