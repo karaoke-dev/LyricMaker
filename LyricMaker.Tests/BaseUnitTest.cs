@@ -1,5 +1,6 @@
 ﻿using LyricMaker.Extensions;
-using System.Globalization;
+using LyricMaker.Model;
+using LyricMaker.Parser;
 using NUnit.Framework;
 
 namespace LyricMaker.Tests
@@ -13,7 +14,13 @@ namespace LyricMaker.Tests
             TimeTagExtension.SetDecimalPointColon();
         }
 
-        protected void IsLyricEqual(string expected, string actual)
+        protected static Lyric GenerateLyric(string lyric)
+        {
+            var parser = new LrcParser();
+            return parser.Decode(lyric);
+        }
+
+        protected static void IsLyricEqual(string expected, string actual)
         {
             var expectedLyric = expected.Replace("\n", "");
             var actualLyric = expected.Replace("\n", "");

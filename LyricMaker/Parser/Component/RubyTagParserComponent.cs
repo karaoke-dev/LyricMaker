@@ -34,7 +34,7 @@ namespace LyricMaker.Parser.Component
                 return null;
 
             // TODO : have a better way to deal time tag in ruby.
-            ruby = string.Join("", TimeTagExtension.SeparateKaraokeLine(ruby).Select(x => x.word));
+            ruby = string.Join("", TimeTagExtension.SeparateKaraokeLine(ruby).Select(x => x.Word));
 
             // Has start time and end time
             if (values.Length >= 3)
@@ -55,7 +55,7 @@ namespace LyricMaker.Parser.Component
                 if (string.IsNullOrEmpty(timeTagText))
                     return null;
 
-                var milliSecond = TimeTagExtension.timetag2millisec(timeTagText);
+                var milliSecond = TimeTagExtension.TimeTagToMillionSecond(timeTagText);
 
                 for (var i = 0; i < _lyric.Lines.Length; i++)
                 {
@@ -116,7 +116,7 @@ namespace LyricMaker.Parser.Component
                 //Get time
                 var time = _lyric?.Lines[p.Line]?.TimeTags[p.Index].Time;
 
-                return time == null ? null : TimeTagExtension.millisec2timeTag(time.Value);
+                return time == null ? null : TimeTagExtension.MillionSecondToTimeTag(time.Value);
             }
         }
     }
