@@ -27,22 +27,22 @@ namespace LyricMaker.Extensions
         /// Input : 17970
         /// Output : [00:17:97]
         /// </example>
-        /// <param name="millisec"></param>
+        /// <param name="millionSecond"></param>
         /// <returns></returns>
-        public static string millisec2timeTag(int millisec)
+        public static string MillionSecondToTimeTag(int millionSecond)
         {
-            return millisec < 0 ? "" : string.Format("[{0:D2}:{1:D2}" + DecimalPoint + "{2:D2}]", millisec / 1000 / 60, millisec / 1000 % 60, millisec / 10 % 100);
+            return millionSecond < 0 ? "" : string.Format("[{0:D2}:{1:D2}" + DecimalPoint + "{2:D2}]", millionSecond / 1000 / 60, millionSecond / 1000 % 60, millionSecond / 10 % 100);
         }
 
-        public static int timetag2millisec(string timeTag)
+        public static int TimeTagToMillionSecond(string timeTag)
         {
             if (timeTag.Length < 10 || timeTag[0] != '[' || !char.IsDigit(timeTag[1]))
                 return -1;
             var minute = int.Parse(timeTag.Substring(1, 2));
             var second = int.Parse(timeTag.Substring(4, 2));
-            var mili10 = int.Parse(timeTag.Substring(7, 2));
+            var million = int.Parse(timeTag.Substring(7, 2));
 
-            return (minute * 60 + second) * 1000 + mili10 * 10;
+            return (minute * 60 + second) * 1000 + million * 10;
         }
 
         /// <summary>
@@ -64,14 +64,14 @@ namespace LyricMaker.Extensions
         /// </summary>
         public class Pair
         {
-            public int millisec;
+            public int MillionSecond;
 
-            public string word;
+            public string Word;
 
-            public Pair(int millisec, string word)
+            public Pair(int millionSecond, string word)
             {
-                this.millisec = millisec;
-                this.word = word;
+                MillionSecond = millionSecond;
+                Word = word;
             }
         }
 
@@ -118,7 +118,7 @@ namespace LyricMaker.Extensions
             //Add pair, convert [mm:ss.ss] into millisecond
             Pair ConvertPair(string timeTag, string text)
             {
-                return new Pair(timetag2millisec(timeTag), text);
+                return new Pair(TimeTagToMillionSecond(timeTag), text);
             }
         }
     }

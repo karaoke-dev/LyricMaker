@@ -16,7 +16,7 @@ namespace LyricMaker.Parser.Component
             var pairs = TimeTagExtension.SeparateKaraokeLine(t);
 
             // Combine texts
-            var text = pairs.Aggregate("", (current, p) => current + p.word);
+            var text = pairs.Aggregate("", (current, p) => current + p.Word);
 
             // Create and make sure all check is false
             var timeTags = new TimeTag[text.Length * 2 + 2];
@@ -27,25 +27,25 @@ namespace LyricMaker.Parser.Component
 
             // TODO : what is ti
             int ti;
-            if (pairs[0].word == "")
+            if (pairs[0].Word == "")
             {
-                timeTags[0] = new TimeTag(pairs[0].millisec, pairs[0].millisec > 0);
+                timeTags[0] = new TimeTag(pairs[0].MillionSecond, pairs[0].MillionSecond > 0);
                 ti = 1;
             }
             else
             {
-                timeTags[1] = new TimeTag(pairs[0].millisec, pairs[0].millisec > 0);
-                ti = pairs[0].word.Length * 2;
+                timeTags[1] = new TimeTag(pairs[0].MillionSecond, pairs[0].MillionSecond > 0);
+                ti = pairs[0].Word.Length * 2;
             }
 
             // TODO : what are this doing
             for (var pi = 1; pi < pairs.Length; pi++)
             {
-                if (pairs[pi].word.Length == 0)
+                if (pairs[pi].Word.Length == 0)
                 {
                     if (ti % 2 == 0)
                     {
-                        timeTags[ti] = new TimeTag(pairs[pi].millisec);
+                        timeTags[ti] = new TimeTag(pairs[pi].MillionSecond);
                         ti++;
                     }
                 }
@@ -53,8 +53,8 @@ namespace LyricMaker.Parser.Component
                 {
                     if (ti % 2 == 0)
                         ti++;
-                    timeTags[ti] = new TimeTag(pairs[pi].millisec);
-                    ti += pairs[pi].word.Length * 2 - 1;
+                    timeTags[ti] = new TimeTag(pairs[pi].MillionSecond);
+                    ti += pairs[pi].Word.Length * 2 - 1;
                 }
             }
 
@@ -96,19 +96,19 @@ namespace LyricMaker.Parser.Component
             {
                 var t1 = l.TimeTags[1 + index * 2];
                 var t2 = l.TimeTags[1 + index * 2 + 1];
-                return TimeTagExtension.millisec2timeTag(t1.CheckedTime) +
+                return TimeTagExtension.MillionSecondToTimeTag(t1.CheckedTime) +
                         l.Text[index] +
-                        TimeTagExtension.millisec2timeTag(t2.CheckedTime);
+                        TimeTagExtension.MillionSecondToTimeTag(t2.CheckedTime);
             }
             
             string HeadTimeTag(LyricLine l)
             {
-                return TimeTagExtension.millisec2timeTag(l.TimeTags[0].CheckedTime);
+                return TimeTagExtension.MillionSecondToTimeTag(l.TimeTags[0].CheckedTime);
             }
             
             string TailTimeTag(LyricLine l)
             {
-                return TimeTagExtension.millisec2timeTag(l.TimeTags[l.TimeTags.Length - 1].CheckedTime);
+                return TimeTagExtension.MillionSecondToTimeTag(l.TimeTags[l.TimeTags.Length - 1].CheckedTime);
             }
         }
     }
