@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\**" />
@@ -20,5 +20,17 @@
   <ItemGroup>
     <ProjectReference Include="..\LyricMaker.UI\LyricMaker.UI.csproj" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <StartupObject>LyricMaker.Tests.VisualTestRunner</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)\VisualTestRunner.cs">
+      <Link>VisualTestRunner.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <PropertyGroup>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
 
 </Project>
