@@ -6,14 +6,14 @@ namespace LyricMaker.AutoComplete.TimeTags
     /// <summary>
     /// Checker that can auto check which <see cref="TimeTag"/> is clickable
     /// </summary>
-    public class TimeTagAutoComplete
+    public class TimeTagAutoComplete : IAutoComplete<TimeTagAutoCompleteParameter>
     {
         /// <summary>
         /// Mark time tag as checked by parameter
         /// </summary>
         /// <param name="lyric"></param>
         /// <param name="setting"></param>
-        public void AutoCheck(Lyric lyric, TimeTagAutoCompleteParameter setting)
+        public void Complete(Lyric lyric, TimeTagAutoCompleteParameter setting)
         {
             foreach (var line in lyric.Lines)
             {
