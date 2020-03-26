@@ -14,11 +14,8 @@ namespace LyricMaker.Extensions
         private static char decimalPoint = '.';
         public static char DecimalPoint => decimalPoint;
 
-        private static Regex timeTagRegex = new Regex(@"\[\d\d:\d\d[:.]\d\d\]");
-        private static Regex headTimeTagRegex = new Regex(@"^\[\d\d:\d\d([:.]\d\d)?\]");
-
-        public static Regex TimeTagRegex => timeTagRegex;
-        public static Regex HeadTimeTagRegex => headTimeTagRegex;
+        private static Regex TimeTagRegex { get; } = new Regex(@"\[\d\d:\d\d[:.]\d\d\]");
+        private static Regex HeadTimeTagRegex { get; } = new Regex(@"^\[\d\d:\d\d([:.]\d\d)?\]");
 
         /// <summary>
         /// Convert milliseconds to format [mm:ss.ss]
