@@ -22,14 +22,6 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <StartupObject>LyricMaker.Tests.VisualTestRunner</StartupObject>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)\VisualTestRunner.cs">
-      <Link>VisualTestRunner.cs</Link>
-    </Compile>
-  </ItemGroup>
-  <PropertyGroup>
     <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
 

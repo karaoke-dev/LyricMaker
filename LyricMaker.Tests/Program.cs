@@ -12,7 +12,7 @@ namespace LyricMaker.Tests
         {
             bool portable = args.Contains(@"--portable");
 
-            using (GameHost host = Host.GetSuitableHost(@"visual-tests", portableInstallation: portable))
+            using (GameHost host = Host.GetSuitableHost(@"lyric-maker-visual-tests", portableInstallation: portable))
             {
                 host.Run(new VisualTestGame());
             }
