@@ -19,7 +19,7 @@ namespace LyricMaker.Tests
                 {
                     Children = new Drawable[]
                     {
-                        new TestBrowser(),
+                        new TestBrowser("LyricMaker.Tests"),
                         new CursorContainer(),
                     },
                 }
