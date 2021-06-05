@@ -1,11 +1,19 @@
-﻿using LyricMaker.Parser.Component;
+﻿using LyricMaker.Extensions;
+using LyricMaker.Parser.Component;
 using NUnit.Framework;
 
 namespace LyricMaker.Tests.Parser.Component
 {
     [TestFixture]
-    public class TimeTagUnitTest : BaseUnitTest
+    public class TimeTagUnitTest
     {
+        [SetUp]
+        public void Initialize()
+        {
+            // Use [mm:ss:ss]
+            TimeTagExtension.SetDecimalPointColon();
+        }
+        
         [Test]
         public void TestKaraokeLineEncodeAndDecode()
         {

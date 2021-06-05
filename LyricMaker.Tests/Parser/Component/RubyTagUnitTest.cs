@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace LyricMaker.Tests.Parser.Component
 {
     [TestFixture]
-    public class RubyTagUnitTest : BaseUnitTest
+    public class RubyTagUnitTest
     {
         [TestCase("@Ruby1=帰,かえ", "帰", "かえ")]
         [TestCase("@Ruby1=り,り", "り", "り")]
