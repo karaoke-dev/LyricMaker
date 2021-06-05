@@ -2,27 +2,20 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\**" />
-    <EmbeddedResource Remove="Resources\TestResources.cs" />
   </ItemGroup>
 
   <ItemGroup Label="Package References">
-    <PackageReference Include="Appveyor.TestLogger" Version="2.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-    <PackageReference Include="NUnit" Version="3.12.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.0" />
-    <PackageReference Update="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
   </ItemGroup>
-  <PropertyGroup Label="Project">
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LyricMaker.UI\LyricMaker.UI.csproj" />
+    <ProjectReference Include="..\LyricMaker\LyricMaker.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <GenerateProgramFile>false</GenerateProgramFile>
+  
+  <PropertyGroup Label="Project">
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
 </Project>
