@@ -6,9 +6,4 @@
     <Version>1.1.1</Version>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Lucene.Net" Version="4.8.0-beta00006" />
-    <PackageReference Include="Lucene.Net.Analysis.Kuromoji" Version="4.8.0-beta00006" />
-  </ItemGroup>
-
 </Project>
